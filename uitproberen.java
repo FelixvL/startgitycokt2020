@@ -1,39 +1,46 @@
 import java.util.Scanner;
+import java.time.*;
 class Demo{
 	public static void main(String args[]){
-		Speler speler1 = new Speler();
-		speler1.voornaam = "Johan";
-		speler1.voorstellen();
-		Scanner scanner1 = new Scanner(System.in);
-		String test = scanner1.nextLine();
-		speler1.nieuweNaamGeven("Frits"+test);  // argument
-		speler1.voorstellen();
-	}
-
-}
-
-class Speler{
-	String voornaam;
-	int leeftijd;
-	void voorstellen(){
-		System.out.println("Hoi ik ben: "+voornaam);
-	}
-	void nieuweNaamGeven(String nieuweNaam){  // parameter
-		System.out.println("vanaf nu heet ik "+nieuweNaam);
-		voornaam = nieuweNaam;
-	}
-}
+		Dier dier = new Dier();
+		Dier dier2 = new Konijn();
+		Konijn konijn = new Konijn();	
+		//Konijn konijn2 = new Dier(); // kan niet
+		//Konijn konijn3 = new Olietanker(); 
 
 
-class Schaakspel{
-	Speler zwart;
-	Speler wit;
-	void starten(){
+		dier.aantalCellen = 2000000;
+		konijn.aantalCellen = 1000000;
 
 	}
 }
-// Output   Hoi ik ben Jan en speel met wit
-//		Hoi ik ben Frits en ik speel met zwart
 
 
-// argument parameter
+
+class Olietanker{}
+class Dier{    // parent base
+	int aantalCellen;
+	void voortplanten(){
+		System.out.println("voortplanten in dier");
+	}
+}
+class Konijn extends Dier{   // is a    child subclass Covariant -->richting 3 antwoorden
+	int lengteOren;
+	void wortelsEten(){
+		System.out.println("wortelseten in Konijn");
+	}
+}
+
+
+
+
+
+class Boek{  // relaties 2 soorten      is - a
+	static String uitvinder;     // has - a    boek.deSchrijver
+	Schrijver deSchrijver;		//  has - a
+
+}
+class Schrijver{
+	String naam;
+	LocalDateTime geboortedatum;
+}
