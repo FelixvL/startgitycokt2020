@@ -7,14 +7,25 @@ class Demo{
 		Konijn konijn = new Konijn();	
 		//Konijn konijn2 = new Dier(); // kan niet
 		//Konijn konijn3 = new Olietanker(); 
-
+		Olietanker ot = new Olietanker();
 
 		dier.aantalCellen = 2000000;
 		konijn.aantalCellen = 1000000;
-
+		DierenAmbulance da = new DierenAmbulance();
+		da.ophalen(dier);
+		da.ophalen(konijn);
+		//da.ophalen(ot);  // kan niet
+		dier2.aantalCellen = 300;
+		//dier2.lengteOren = 3;
+		((Konijn) dier2).lengteOren = 7;
 	}
 }
-
+class DierenAmbulance{
+	void ophalen(Dier dier){
+		System.out.println("ophalen"+ dier.aantalCellen);
+		dier.voortplanten();
+	}
+}
 
 
 class Olietanker{}
@@ -28,6 +39,9 @@ class Konijn extends Dier{   // is a    child subclass Covariant -->richting 3 a
 	int lengteOren;
 	void wortelsEten(){
 		System.out.println("wortelseten in Konijn");
+	}
+	void voortplanten(){
+		System.out.println("voortplanten in konijn");
 	}
 }
 
